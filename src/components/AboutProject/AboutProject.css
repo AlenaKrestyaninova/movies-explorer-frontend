@@ -1,0 +1,122 @@
+.project {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+.project__articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 70px;
+}
+
+.project__subtitle {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    margin: 0;
+}
+
+.project__text {
+    margin-top: 26px;
+    font-size: 14px;
+    line-height: 1.43;
+    margin-bottom: 0;
+}
+
+.progress-bar {
+    margin-top: 110px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.21;
+}
+
+.progress-bar__item_backend {
+    width: 20%;
+}
+
+.progress-bar__item_frontend {
+    width: 80%;
+}
+
+.progress-bar__bar {
+    height: 36px;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar__text {
+    text-align: center;
+    margin-top: 14px;
+    color: #8B8B8B;
+}
+
+.progress-bar__bar_backend {
+    background-color: #3DDC84;
+    color: black;
+}
+
+.progress-bar__bar_frontend {
+    background-color: #303030;
+}
+
+
+/* Медиа-запрос для ширины 768px (меньше 1279px)*/
+@media all and (max-width:1279px) {
+    .project {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+    .project__articles {
+        gap: 30px;
+    }
+    .project__text {
+        margin-top: 22px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .progress-bar {
+        margin-top: 93px;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .project {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .project__articles {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 56px;
+        margin-top: 60px;
+    }
+    .project__subtitle {
+        font-size: 18px;
+    }
+    .project__text {
+        margin-top: 16px;
+        font-size: 11px;
+    }
+    .progress-bar {
+        margin-top: 60px;
+    }
+    .progress-bar__item {
+        font-size: 11px;
+    }
+}

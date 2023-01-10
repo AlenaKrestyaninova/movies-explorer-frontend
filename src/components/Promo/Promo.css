@@ -1,0 +1,89 @@
+.promo {
+    background-color: #073042;
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+.promo__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.promo__title{
+    margin: 0;
+    font-size: 50px;
+    line-height: 1.16;
+    max-width: 640px;
+    font-weight: 400;
+}
+
+.promo__subtitle {
+    font-size: 13px;
+    line-height: 1.23;
+    margin-top: 36px;
+    opacity: 0.5;
+    margin-bottom: 0;
+}
+
+.promo__button {
+    margin-top: 84px;
+    margin-bottom: 0;
+    padding: 0;
+    width: 129px;
+    height: 36px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .6);
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    cursor: pointer;
+}
+
+
+/* Медиа-запрос для ширины 768px (меньше 1279px)*/
+@media all and (max-width:1279px) {
+    .promo {
+        padding-top: 140px;
+        text-align: center;
+    }
+    .promo__content {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+    .promo__title{
+        margin-top: 48px;
+        font-size: 40px;
+    }
+    .promo__subtitle {
+        margin-top: 24px;
+    }
+    .promo__button {
+        margin-top: 92px;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .promo {
+        padding-bottom: 30px;
+    }
+    .promo {
+        padding-top: 70px;
+        text-align: center;
+    }
+    .promo__title{
+        margin-top: 44px;
+        font-size: 30px;
+    }
+    .promo__button {
+        margin-top: 80px;
+    }
+    .promo__logo {
+        max-width: 65%;
+    }
+}

@@ -1,0 +1,42 @@
+.navigation {
+    width: 100%;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 44px;
+}
+
+.navigation__links {
+    
+}
+
+.navigation__link {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.38;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity .3s ease-in-out;
+}
+
+.navigation__link_saved {
+    margin-left: 16px;
+}
+
+.navigation__account {
+    background: #313131;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    color: inherit;
+    text-decoration: none;
+    padding: 0 20px 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.navigation__account:hover, .navigation__link:hover {
+    opacity: 0.5;
+}

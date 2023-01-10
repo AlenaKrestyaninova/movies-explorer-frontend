@@ -1,0 +1,19 @@
+.title {
+    font-size: 22px;
+    line-height: 1.23;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #DADADA;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .project__title {
+        font-size: 18px;
+        padding-bottom: 28px;
+    }
+}
