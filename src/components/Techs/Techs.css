@@ -7,6 +7,12 @@
     justify-content: center;
 }
 
+.techs__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .techs__subtitle {
     margin-top: 90px;
     margin-bottom: 26px;
@@ -29,8 +35,6 @@
     display: grid;
     grid-template-columns: repeat(7, 90px);
     margin: 90px auto 0;
-    margin-left: auto;
-    margin-right: auto;
     gap: 10px;
     list-style: none;
     padding: 0;

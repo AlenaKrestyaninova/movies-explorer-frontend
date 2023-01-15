@@ -27,24 +27,32 @@
 }
 
 .promo__button {
+    display: block;
     margin-top: 84px;
     margin-bottom: 0;
     padding: 0;
     width: 129px;
-    height: 36px;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, .6);
     border-radius: 3px;
     color: #FFFFFF;
     font-weight: 500;
     font-size: 12px;
-    line-height: 1.33;
+    line-height: 36px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: opacity .3s ease-in-out;
+}
+
+.promo__button:hover {
+    opacity: 0.5;
 }
 
 
-/* Медиа-запрос для ширины 768px (меньше 1279px)*/
-@media all and (max-width:1279px) {
+/* Медиа-запрос для ширины 768px (меньше 1023px)*/
+@media all and (max-width:1023px) {
     .promo {
         padding-top: 140px;
         text-align: center;
@@ -63,7 +71,7 @@
         margin-top: 24px;
     }
     .promo__button {
-        margin-top: 92px;
+        margin: 92px auto 0;
     }
 }
 

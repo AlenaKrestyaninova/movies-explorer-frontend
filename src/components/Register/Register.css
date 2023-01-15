@@ -1,0 +1,66 @@
+.signup {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #202020;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.signup__content {
+    width: 396px;
+    box-sizing: border-box;
+}
+
+.signup__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.signup__submit {
+    background: #4285F4;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    height: 45px;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin-top: 91px;
+    transition: opacity .3s ease-in-out;
+}
+
+.signup__to-login {
+    text-align: center;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+    text-decoration: none;
+    margin-top: 16px;
+    display: block;
+    transition: opacity .3s ease-in-out;
+}
+
+.signup__to-login_blue {
+    color: #4285F4;
+}
+
+.signup__to-login:hover, .signup__submit:hover {
+    opacity: 0.6;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .signup__content {
+        width: calc(100% - 2*30px);
+    }
+}

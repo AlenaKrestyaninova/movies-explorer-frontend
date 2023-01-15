@@ -1,0 +1,77 @@
+.search {
+    padding-top: 80px;
+}
+
+.search__container {
+    border-bottom: 1px solid #AAAAAA;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 94px;
+}
+
+.search__input-container {
+    width: calc(100% - 200px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.search__input {
+    display: block;
+    opacity: 0.2;
+    border: 1.5px solid #AAAAAA;
+    border-radius: 50px;
+    height: 48px;
+    padding: 0 0 0 22px;
+    background-color: transparent;
+    width: 100%;
+}
+
+.search__input::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    color: #8B8B8B;
+}
+
+.search__button {
+    background-image: url(../../images/search__arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #4285F4;
+    border-radius: 48px;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    right: 7px;
+    border: none;
+}
+
+/* Медиа-запрос для ширины 768px (меньше 1023px)*/
+@media all and (max-width:1023px) {
+    .search {
+        padding-top: 60px;
+    }
+    .search__container {
+        border-bottom: 1px solid #AAAAAA;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 56px;
+    }
+    .search__input-container {
+        width: 100%;
+        margin-bottom: 37px;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .search__container {
+        padding-bottom: 43px;
+    }
+    .search__input-container {
+        margin-bottom: 44px;
+    }
+}

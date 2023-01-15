@@ -1,0 +1,35 @@
+.input {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input__label {
+    display: block;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+    padding-bottom: 10px;
+}
+
+.input__field {
+    height: 46px;
+    background: #2F2F2F;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    border: none;
+    padding: 0 15px;
+    width: calc(100% - 2*15px);
+    display: block;
+}
+
+.input__error {
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+    margin: 0;
+    position: absolute;
+    top: 74px;
+}

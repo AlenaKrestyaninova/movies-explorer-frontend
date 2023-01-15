@@ -49,10 +49,6 @@
 
 /* Медиа-запрос для ширины 320px (меньше 767px)*/
 @media all and (max-width:767px) {
-    .footer {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
     .footer__title {
         font-size: 12px;
     }
