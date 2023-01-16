@@ -14,7 +14,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
-  const [query, setQuery] = React.useState('');
+  // const [query, setQuery] = React.useState('');
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -1,0 +1,68 @@
+.not-found {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #202020;
+    justify-content: center;
+    /* align-items: center; */
+    z-index: 1;
+}
+
+.not-found__content {
+    width: 400px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: calc(50vh - 97px);
+    justify-content: space-between;
+}
+
+.not-found__text-content {
+    align-self: center;
+    text-align: center;
+}
+
+.not-found__error {
+    font-weight: 400;
+    font-size: 140px;
+    line-height: 169px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.not-found__text {
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0;
+}
+
+.not-found__back {
+    font-size: 14px;
+    line-height: 17px;
+    color: #4285F4;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .not-found__error {
+        font-size: 80px;
+        line-height: 97px;
+        margin-bottom: 10px;
+    }
+    .not-found__text {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .not-found__back {
+        font-size: 12px;
+        line-height: 15px;
+        margin-bottom: 30px;
+    }
+}
