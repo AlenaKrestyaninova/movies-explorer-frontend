@@ -7,32 +7,36 @@ import { Link } from 'react-router-dom';
 const Login = props => {
 
     return (
-        <div className="Login">
-            <img src={logo} alt="лого" className="Login__logo" />
-            <h2 className='Login__title'>Рады видеть!</h2>
-            <form className='Login__form'>
-                <Input
-                    id="email"
-                    type="email"
-                    name="email"
-                    placeholder="Электронная почта"
-                    errorText="Формат почты неправильный"
-                />
-                <Input
-                    id="password"
-                    type="password"
-                    name="password"
-                    placeholder="Пароль"
-                    errorText="Пароль содержит недостаточно цифр, букв и еще чего-то там"
-                />
-                <button type="submit" className='Login__submit'>Войти</button>
-            </form>
-            <Link exact to="/signin" className="Login__to-register">
-                Ещё не зарегистрированы?
-                <span className="Login__to-login_blue">
-                    Регистрация
-                </span>
-            </Link>
+        <div className="login">
+            <div className="login__content">
+                <img src={logo} alt="лого" className="login__logo" />
+                <h2 className='login__title'>Рады видеть!</h2>
+                <form className='login__form'>
+                    <Input
+                        id="email"
+                        type="email"
+                        name="email"
+                        label="Email"
+                        placeholder="Электронная почта"
+                        errorText="Формат почты неправильный"
+                    />
+                    <Input
+                        id="password"
+                        type="password"
+                        name="password"
+                        label="Пароль"
+                        placeholder="Пароль"
+                        errorText="Пароль содержит недостаточно цифр, букв и еще чего-то там"
+                    />
+                    <button type="submit" className='login__submit'>Войти</button>
+                </form>
+                <Link exact to="/signin" className="login__to-register">
+                    Ещё не зарегистрированы?&nbsp;
+                    <span className="login__to-register_blue">
+                        Регистрация
+                    </span>
+                </Link>
+            </div>
         </div>
     );
 };
