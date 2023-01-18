@@ -29,7 +29,7 @@
 }
 
 /* Медиа-запрос для ширины 320px (меньше 767px)*/
-@media all and (max-width:767px) {
+@media all and (max-width:768px) {
     .page__section_size_big {
         width: calc(100% - 2*14px);
     }

@@ -20,13 +20,13 @@
 
 .search__input {
     display: block;
-    opacity: 0.2;
-    border: 1.5px solid #AAAAAA;
+    border: 1.5px solid rgba(170, 170, 170, .2);
     border-radius: 50px;
     height: 48px;
     padding: 0 0 0 22px;
     background-color: transparent;
     width: 100%;
+    color: white;
 }
 
 .search__input::placeholder {
@@ -47,6 +47,12 @@
     position: absolute;
     right: 7px;
     border: none;
+    transition: scale .3s ease-in-out;
+}
+
+.search__button:hover {
+    scale: 1.2;
+    filter: brightness(1.2);
 }
 
 /* Медиа-запрос для ширины 768px (меньше 1023px)*/

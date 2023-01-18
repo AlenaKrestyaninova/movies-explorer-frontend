@@ -11,6 +11,12 @@
     margin-bottom: 30px;
 }
 
+.portfolio__items {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
 .portfolio__link {
     display: flex;
     flex-direction: row;

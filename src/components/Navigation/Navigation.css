@@ -62,15 +62,14 @@
     .navigation {
         justify-content: flex-end;
     }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:768px) {
     .navigation__content {
         display: none;
     }
     .navigation__burger {
         display: block;
     }
-}
-
-/* Медиа-запрос для ширины 320px (меньше 767px)*/
-@media all and (max-width:767px) {
-    
 }

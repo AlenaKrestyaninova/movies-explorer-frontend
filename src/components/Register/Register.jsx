@@ -18,6 +18,7 @@ const Register = props => {
                         name="name"
                         label="Имя"
                         placeholder="Имя пользователя"
+                        minLength="2"
                         maxLength="30"
                         errorText="Ваше имя неправильное"
                     />

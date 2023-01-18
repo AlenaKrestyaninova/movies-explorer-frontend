@@ -12,13 +12,13 @@ function Main(props) {
   // const currentUser = React.useContext(CurrentUserContext);
 
   return (
-    <main className="content">
+    <>
       <Promo/>
       <AboutProject/>
       <Techs/>
       <AboutMe/>
       <Portfolio/>
-    </main>
+    </>
   );
 }
 

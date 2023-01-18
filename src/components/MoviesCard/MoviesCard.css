@@ -30,13 +30,26 @@
     margin: 13px 0 0;
 }
 
-.card__like {
+.card__like, .card__delete {
     width: 14px;
     height: 12px;
-    background-image: url(../../images/like__active.svg);
+    background-image: url(../../images/like__inactive.svg);
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    transition: scale .3s ease-in-out;
+}
+
+.card__like_active {
+    background-image: url(../../images/like__active.svg);
+}
+
+.card__like:hover, .card__delete:hover {
+    scale: 1.2;
+    filter: brightness(1.2);
 }
 
 .card__trailer {
@@ -71,9 +84,12 @@
     }
     .card__trailer {
         margin-right: 0;
+        width: 100%;
+        object-fit: cover;
     }
     .card__img {
-        width: 300px;
+        width: 100%;
         height: 168px;
+        object-fit: cover;
     }
 }

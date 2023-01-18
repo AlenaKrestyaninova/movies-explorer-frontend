@@ -19,6 +19,8 @@ function SearchForm(props) {
                         placeholder="Фильмы"
                         value={value}
                         onChange={handleChange}
+                        required
+                        minLength="2"
                     />
                     <button className="search__button" type='submit'></button>
                 </div>

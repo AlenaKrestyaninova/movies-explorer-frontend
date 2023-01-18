@@ -6,7 +6,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 function SavedMovies() {
 
     return (
-        <section className="movies">
+        <section className="saved-movies">
             <SearchForm />
             <MoviesCardList />
         </section>
