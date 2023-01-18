@@ -1,11 +1,16 @@
 .navigation {
     width: 100%;
     color: inherit;
+    margin-left: 44px;
+    display: flex;
+}
+
+.navigation__content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-left: 44px;
+    width: 100%;
 }
 
 .navigation__links {
@@ -39,4 +44,33 @@
 
 .navigation__account:hover, .navigation__link:hover {
     opacity: 0.5;
+}
+
+.navigation__burger {
+    background-image: url(../../images/burger-menu.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 43px;
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+
+/* Медиа-запрос для ширины 768px (меньше 1279px)*/
+@media all and (max-width:1279px) {
+    .navigation {
+        justify-content: flex-end;
+    }
+    .navigation__content {
+        display: none;
+    }
+    .navigation__burger {
+        display: block;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    
 }

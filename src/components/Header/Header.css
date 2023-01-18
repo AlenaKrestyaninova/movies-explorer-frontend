@@ -14,3 +14,35 @@
 .header__promo {
     background-color: #073042;
 }
+
+.header__buttons {
+    display: flex;
+}
+
+.header__button {
+    font-size: 12px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: block;
+}
+
+.header__button_signin {
+    background-color: #3DDC84;
+    border-radius: 3px;
+    padding: 0 20px;
+    margin-left: 30px;
+    color: black;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .header__button {
+        font-size: 10px;
+        line-height: 26px;
+    }
+    .header__button_signin {
+        padding: 0 12px;
+        margin-left: 14px;
+    }
+}

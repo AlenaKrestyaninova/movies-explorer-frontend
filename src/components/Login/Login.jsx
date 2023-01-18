@@ -30,7 +30,7 @@ const Login = props => {
                     />
                     <button type="submit" className='login__submit'>Войти</button>
                 </form>
-                <Link exact to="/signin" className="login__to-register">
+                <Link exact to="/signup" className="login__to-register">
                     Ещё не зарегистрированы?&nbsp;
                     <span className="login__to-register_blue">
                         Регистрация

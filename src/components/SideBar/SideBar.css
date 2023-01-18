@@ -1,0 +1,98 @@
+.sidebar {
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #202020;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.sidebar_open {
+    visibility: visible;
+    opacity: 1;
+    width: 520px;
+    z-index: 2;
+}
+
+.sidebar__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 159px;
+    padding-bottom: 90px;
+    height: 100%;
+}
+
+.sidebar__close-button {
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    background-image: url(../../images/close-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    position: fixed;
+    top: 22px;
+    right: 22px;
+}
+
+.sidebar__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar__link {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-bottom: 28px;
+}
+
+.sidebar__link:hover {
+    text-decoration: underline;
+}
+
+.sidebar__buttton {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #313131;
+    border-radius: 20px;
+    text-decoration: none;
+    padding: 0 20px;
+    display: block;
+    transition: opacity .3s ease-in-out;
+}
+
+.sidebar__buttton:hover {
+    opacity: 0.5;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .sidebar_open {
+        width: 100%;
+    }
+    .sidebar__content {
+        padding-top: 144px;
+        padding-bottom: 46px;
+    }
+    .sidebar__close-button {
+        top: 13px;
+        right: 13px;
+    }
+}

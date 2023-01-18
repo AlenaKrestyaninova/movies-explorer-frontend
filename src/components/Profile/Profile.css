@@ -1,0 +1,105 @@
+.profile {
+    position: fixed;
+    display: flex;
+    top: 74px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #202020;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.profile__content {
+    width: 410px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+}
+
+.profile__form {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+    background-color: #424242;
+    width: 100%;
+    margin-top: 107px;
+}
+
+.profile__form-item {
+    background-color: #202020;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 46px;
+    width: 100%;
+}
+
+.profile__form-item_data {
+    display: block;
+    background-color: transparent;
+    border: none;
+    font-size: 11px;
+    font-weight: 400;
+    text-align: right;
+    color: #FFFFFF;
+}
+
+.profile__edit {
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    margin-top: 204px;
+    margin-bottom: 0;
+}
+
+.profile__logout {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #EE3465;
+    text-decoration: none;
+    margin-top: 16px;
+}
+
+/* Медиа-запрос для ширины 768px (меньше 1279px)*/
+@media all and (max-width:1279px) {
+    .profile__form {
+        margin-top: 80px;
+    }
+    .profile__edit {
+        margin-top: 194px;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .profile__content {
+        max-width: calc(100% - 2*30px);
+    }
+    .profile__form {
+        margin-top: 46px;
+    }
+    .profile__edit {
+        margin-top: 220px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .profile__logout {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
