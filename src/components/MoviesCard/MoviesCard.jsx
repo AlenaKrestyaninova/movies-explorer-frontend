@@ -33,16 +33,17 @@ function MoviesCard(props) {
                     <p className="card__duration">1ч 42м</p>
                 </div>
                 {/* Потом передеаю на ?isLiked */}
-                {location.pathname === "/movies" ? (
+                {location.pathname === "/saved-movies" ? (
+                    <button
+                        className="card__delete"
+                        // onClick={()=>{handleDeleteClick(card)}}
+                    ></button>
+                ) : (
                     <button 
                         className={likeButtonClassName}
                         onClick={()=>{handleLikeClick(card)}}
                     ></button>
-                ) : (
-                    <button 
-                        className="card__delete"
-                        // onClick={()=>{handleDeleteClick(card)}}
-                    ></button>
+                    
                 )}
             </div>
             <a href="#" className="card__trailer">

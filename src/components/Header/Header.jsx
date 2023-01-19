@@ -20,7 +20,7 @@ function Header() {
     };
 
     return (
-        <section className={headerClassName}>
+        <header className={headerClassName}>
             <div className="header__content page__section page__section_size_big">
                 <Link to="/">
                     <img src={logo} alt="логотип" className="header__logo" />
@@ -38,7 +38,7 @@ function Header() {
                     </>
                 )}
             </div>
-        </section>
+        </header>
     );
 }
 
