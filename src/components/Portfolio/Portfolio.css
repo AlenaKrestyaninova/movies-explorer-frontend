@@ -1,0 +1,74 @@
+.portfolio {
+    padding-bottom: 125px;
+}
+
+.portfolio__title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.11;
+    color: #8B8B8B;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.portfolio__items {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.portfolio__link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    font-size: 30px;
+    line-height: 89px;
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #424242;
+    width: 100%;
+    transition: opacity .3s ease-in-out;
+}
+
+.portfolio__link:hover {
+    opacity: 0.5;
+}
+
+.portfolio__text {
+    line-height: 89px;
+    margin: 0;
+    letter-spacing: -0.04em;
+}
+
+.portfolio__arrow {
+    line-height: 89px;
+}
+
+/* Медиа-запрос для ширины 768px (меньше 1279px)*/
+@media all and (max-width:1279px) {
+    .portfolio {
+        padding-bottom: 90px;
+    }
+    .portfolio__link {
+        font-size: 28px;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .portfolio__title {
+        font-size: 14px;
+        line-height: 1.43;
+        margin-bottom: 20px;
+    }
+    .portfolio__link {
+        font-size: 18px;
+    }
+    .portfolio__text {
+        line-height: 67px;
+    }
+    .portfolio__arrow {
+        line-height: 67px;
+    }
+}

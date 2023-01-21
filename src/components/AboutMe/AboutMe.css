@@ -1,0 +1,121 @@
+.me {
+    padding-top: 110px;
+    padding-bottom: 125px;
+}
+
+.me__content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 66px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.me__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.me__text {
+    max-width: 600px;
+}
+
+.me__subtitle {
+    margin: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+}
+
+.me__about {
+    margin: 18px 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.11;
+}
+
+.me__description {
+    margin: 26px 0 0;
+    font-size: 14px;
+    line-height: 1.57;
+}
+
+.me__github-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.me__photo {
+    width: 292px;
+    height: 352px;
+    background-image: url(./../../images/avatar.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    margin-left: 49px;
+}
+
+/* Медиа-запрос для ширины 768px (меньше 1279px)*/
+@media all and (max-width:1279px) {
+    .me {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+    .me__subtitle {
+        font-size: 40px;
+        line-height: 1;
+    }
+    .me__about {
+        margin: 16px 0 0;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .me__description {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .me__photo {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .me {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .me__content {
+        flex-direction: column-reverse;
+        margin-top: 60px;
+    }
+    .me__subtitle {
+        margin-top: 40px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .me__about {
+        margin: 20px 0 0;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+    .me__description {
+        font-size: 11px;
+    }
+    .me__github-link {
+        margin-top: 40px;
+    }
+    .me__photo {
+        margin-left: 0;
+        align-self: center;
+    }
+}

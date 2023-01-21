@@ -1,0 +1,69 @@
+.footer {
+    padding-top: 79px;
+}
+
+.footer__title {
+    font-size: 13px;
+    line-height: 1.23;
+    text-align: center;
+    color: #8B8B8B;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid #424242;
+    padding-bottom: 20px;
+}
+
+.footer__down {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 13px;
+    line-height: 1.23;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.footer__year {
+    margin: 0;
+}
+
+.footer__buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer__button {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity .3s ease-in-out;
+    margin: 0;
+}
+
+.footer__button:hover {
+    opacity: 0.5;
+}
+
+.footer__button_praktikum {
+    margin-right: 20px;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .footer__title {
+        font-size: 12px;
+    }
+    .footer__down {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .footer__buttons {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .footer__button_praktikum {
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+}

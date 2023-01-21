@@ -1,0 +1,99 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #2F2F2F;
+    min-height: 134px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.card__content {
+    margin: 22px 0 22px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card__name {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+}
+
+.card__duration {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: #8B8B8B;
+    margin: 13px 0 0;
+}
+
+.card__like, .card__delete {
+    width: 14px;
+    height: 12px;
+    background-image: url(../../images/like__inactive.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    transition: scale .3s ease-in-out;
+}
+
+.card__delete {
+    background-image: url(../../images/delete.svg);
+}
+
+.card__like_active {
+    background-image: url(../../images/like__active.svg);
+}
+
+.card__like:hover, .card__delete:hover {
+    scale: 1.2;
+    filter: brightness(1.2);
+}
+
+.card__trailer {
+    display: flex;
+    margin-right: 6px;
+    align-self: center;
+}
+
+.card__img {
+    width: 220px;
+    height: 122px;
+}
+
+/* Медиа-запрос для ширины 320px (меньше 767px)*/
+@media all and (max-width:767px) {
+    .card {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        min-height: 232px;
+        margin-bottom: 20px;
+    }
+    .card__content {
+        flex-direction: row;
+        margin: 14px 12px;
+    }
+    .card__name {
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .card__duration {
+        margin-top: 8px;
+    }
+    .card__trailer {
+        margin-right: 0;
+        width: 100%;
+        object-fit: cover;
+    }
+    .card__img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
