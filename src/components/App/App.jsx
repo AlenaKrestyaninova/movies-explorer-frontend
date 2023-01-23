@@ -15,11 +15,46 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   // const [query, setQuery] = React.useState('');
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isRegisterOk, setIsRegisterOk]  = React.useState(false);
+  const [cards, setCards] = React.useState([]);
+  // const navigate = useNavigate();
+
+  // const handleLogin = (email, password) =>{
+  //   return auth.authorize(email, password)
+  //     .then((data) => {
+  //       localStorage.setItem('jwt', data.token)
+  //       setLoggedIn(true);
+  //       navigate('/movies');
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+  // };
+
+  // const handleRegister = (name, email, password) =>{
+  //   return auth.register(name, email, password)
+  //     .then(() =>{
+  //       navigate('/signin');
+  //       setIsRegisterOk(true);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // const handleLogout = () => {
+  //   if (!localStorage.getItem('jwt')) return;
+  //   localStorage.removeItem('jwt');
+  //   setLoggedIn(false);
+  //   setCurrentUser({});
+  //   navigate('/sign-in');
+  // };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header />
+        <Header loggedIn={loggedIn} />
         <main className="main">
           <Routes>
             <Route path="/" element={<Main />} />

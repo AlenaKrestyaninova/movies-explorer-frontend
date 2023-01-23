@@ -32,7 +32,7 @@
 }
 
 .signup__submit {
-    background: #4285F4;
+    background-color: #4285F4;
     border-radius: 3px;
     font-weight: 500;
     font-size: 14px;
@@ -44,6 +44,11 @@
     padding: 0;
     margin-top: 91px;
     transition: opacity .3s ease-in-out;
+}
+
+.signup__submit_disabled {
+    background-color: #2F2F2F;
+    color: #8B8B8B;
 }
 
 .signup__to-login {

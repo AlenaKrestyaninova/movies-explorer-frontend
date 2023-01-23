@@ -14,8 +14,8 @@ function Input(props) {
                 required
                 minLength="2"
                 maxLength={maxLength}
-                // value={value}
-                // onChange={onChange}
+                value={value}
+                onChange={onChange}
             />
             <p className={`input__error ${errorText && 'input__error_active'}`}>
                 {errorText}

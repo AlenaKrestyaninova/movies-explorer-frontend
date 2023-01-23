@@ -46,6 +46,11 @@
     transition: opacity .3s ease-in-out;
 }
 
+.login__submit_disabled {
+    background-color: #2F2F2F;
+    color: #8B8B8B;
+}
+
 .login__to-register {
     text-align: center;
     font-size: 14px;

@@ -3,15 +3,31 @@ import './Register.css';
 import logo from '../../images/logo.svg';
 import Input from '../Input/Input';
 import { Link } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm.js';
 
-const Register = props => {
+function Register(props){
+    const {onRegister} = props;
+    const {values, handleChange, setValues} = useForm({
+        name: '',
+        email: '',
+        password: ''
+    });
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!values.password || !values.email) return;
+        onRegister({ 
+            name: values.name, 
+            email: values.email,
+            password: values.password });
+    };
 
     return (
         <div className="signup">
             <div className="signup__content">
                 <img src={logo} alt="лого" className="signup__logo" />
                 <h2 className='signup__title'>Добро пожаловать!</h2>
-                <form className='signup__form'>
+                <form className='signup__form' onSubmit={handleSubmit}>
                     <Input
                         id="name"
                         type="text"
@@ -21,6 +37,8 @@ const Register = props => {
                         minLength="2"
                         maxLength="30"
                         errorText="Ваше имя неправильное"
+                        onChange={handleChange}
+                        value={values.name || ''} 
                     />
                     <Input
                         id="email"
@@ -29,6 +47,8 @@ const Register = props => {
                         label="Email"
                         placeholder="Электронная почта"
                         errorText="Формат почты неправильный"
+                        onChange={handleChange}
+                        value={values.email || ''} 
                     />
                     <Input
                         id="password"
@@ -37,6 +57,8 @@ const Register = props => {
                         label="Пароль"
                         placeholder="Пароль"
                         errorText="Пароль содержит недостаточно цифр, букв и еще чего-то там"
+                        onChange={handleChange}
+                        value={values.password || ''} 
                     />
                     <button type="submit" className='signup__submit'>Зарегистрироваться</button>
                 </form>

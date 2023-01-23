@@ -3,15 +3,30 @@ import './Login.css';
 import logo from '../../images/logo.svg';
 import Input from '../Input/Input.jsx';
 import { Link } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm.js';
 
-const Login = props => {
+function Login (props) {
+    const {onLogin} = props;
+    const {values, handleChange, setValues} = useForm({
+        email: '',
+        password: ''
+    });
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!values.password || !values.email) return;
+        onLogin({ 
+            name: values.name, 
+            email: values.about,
+            password: values.password });
+    };
 
     return (
         <div className="login">
             <div className="login__content">
                 <img src={logo} alt="лого" className="login__logo" />
                 <h2 className='login__title'>Рады видеть!</h2>
-                <form className='login__form'>
+                <form className='login__form' onSubmit={handleSubmit}>
                     <Input
                         id="email"
                         type="email"
@@ -19,6 +34,8 @@ const Login = props => {
                         label="Email"
                         placeholder="Электронная почта"
                         errorText="Формат почты неправильный"
+                        onChange={handleChange}
+                        value={values.email || ''}
                     />
                     <Input
                         id="password"
@@ -27,6 +44,8 @@ const Login = props => {
                         label="Пароль"
                         placeholder="Пароль"
                         errorText="Пароль содержит недостаточно цифр, букв и еще чего-то там"
+                        onChange={handleChange}
+                        value={values.password || ''} 
                     />
                     <button type="submit" className='login__submit'>Войти</button>
                 </form>
