@@ -1,10 +1,9 @@
 import React from 'react';
 import './Header.css';
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 import SideBar from '../SideBar/SideBar';
-import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 function Header(props) {

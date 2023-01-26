@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
@@ -22,8 +22,8 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   // Запрос в поиске
   const [query, setQuery] = React.useState('');
-  // Фильмы по поиску
-  const [moviesByQuery, setMoviesByQuery] = React.useState([]);
+  // Фильмы
+  const [movies, setMovies] = React.useState([]);
   // Имя пользователя для профиля
   const [userName, setUserName] = React.useState('');
   // Фильмы пользователя
@@ -36,6 +36,7 @@ function App() {
   const [isChecked, setIsChecked] = React.useState(false);
   const [didUserSearch, setDidUserSearch] = React.useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (email, password) =>{
     return auth.authorize(email, password)
@@ -98,7 +99,10 @@ function App() {
       .catch((err) => console.log(err))
     };
     if(localStorage.foundMovies){
-      setMoviesByQuery(JSON.parse(localStorage.foundMovies));
+      setMovies(JSON.parse(localStorage.foundMovies));
+    };
+    if(location.pathname === '/saved-movies') {
+      setMovies(JSON.parse(localStorage.userMovies));
     }
   }, []);
 
@@ -131,7 +135,7 @@ function App() {
         nameEN: item.nameEN,
       }));
     const foundMovies = checkCheckbox(moviesToFilter);
-    setMoviesByQuery(foundMovies);
+    setMovies(foundMovies);
     localStorage.setItem('foundMovies', JSON.stringify(foundMovies))
     setQuery('');
     setDidUserSearch(true);
@@ -144,6 +148,7 @@ function App() {
       mainApi.addMovie(card)
         .then((card) => {
           setUserMovies([...userMovies, card]);
+          localStorage.setItem('userMovies', JSON.stringify(userMovies))
           setIsMovieAdded(true);
         })
         .catch((err) => {
@@ -199,7 +204,7 @@ function App() {
                   onAddToUserList={handleAddToUserList}
                   isMovieAdded={isMovieAdded}
                   onDelete={handleDelete}
-                  cards={moviesByQuery}
+                  cards={movies}
                   loading={loading}
                   didUserSearch={didUserSearch}
                   isChecked={isChecked}
