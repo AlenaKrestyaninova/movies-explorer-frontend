@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.alenadiploma.nomoredomains.club';
+import { BASE_URL } from './config.js';
 
 const request = ({
     url,
@@ -23,10 +23,10 @@ const request = ({
         });
 }
 
-export const register = (email, password) => {
+export const register = (name, email, password) => {
     return request({
         url: '/signup',
-        data: {email, password},
+        data: {name, email, password},
     })
 };
 
@@ -37,13 +37,13 @@ export const authorize = (email, password) => {
     })
 };
 
-export const getContent = (token) => {
-    return request({
-        url: '/users/me',
-        method: 'GET',
-        token,
-    });
-};
+// export const getContent = (token) => {
+//     return request({
+//         url: '/users/me',
+//         method: 'GET',
+//         token,
+//     });
+// };
 
 
 // Запросы, переписанные без шаблона

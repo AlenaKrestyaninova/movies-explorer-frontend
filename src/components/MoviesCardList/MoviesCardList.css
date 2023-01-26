@@ -4,6 +4,20 @@
     padding-left: 0;
 }
 
+.card-list__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #2F2F2F;
+    min-height: 134px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.card-list__message {
+    text-align: center;
+}
+
 /* Медиа-запрос для ширины 768px (меньше 1279px)*/
 @media all and (max-width:1279px) {
     .card-list {
@@ -15,5 +29,11 @@
 @media all and (max-width:767px) {
     .card-list {
         padding-top: 40px;
+    }
+    .card-list__item {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        min-height: 232px;
+        margin-bottom: 20px;
     }
 }

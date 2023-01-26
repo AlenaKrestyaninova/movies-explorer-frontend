@@ -2,25 +2,24 @@ import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 
 function MoviesCardList(props) {
-    // const { cards } = props
-    //   const { cards, didUserSearch } = props
+    const { cards, onAddToUserList, isMovieAdded, onDelete, didUserSearch } = props
 
-    //   if (didUserSearch && cards.length === 0) {
-    //     return <p className='card-list__message'>Ничего не найдено</p>
-    //   }
+    if (didUserSearch && cards.length === 0) {
+    return <p className='card-list__message'>Ничего не найдено</p>
+    }
 
     return (
         <ul className='card-list page__section page__section_size_small'>
-            <MoviesCard />
-        {/* {cards?.map((e) => (
-            <MoviesCard
-            card={e}
-            key={e.id ? e.id : e._id}
-            mode={props.mode}
-            onAdd={props.onAdd}
-            onRemove={props.onRemove}
-            />
-        ))} */}
+            {cards.map((card) => (
+                <li className="card-list__item" key={card.id}>
+                    <MoviesCard
+                        onAddToUserList={onAddToUserList}
+                        isMovieAdded={isMovieAdded}
+                        onDelete={onDelete}
+                        card={card}
+                    />
+                </li>
+            ))}
         </ul>
     )
 }

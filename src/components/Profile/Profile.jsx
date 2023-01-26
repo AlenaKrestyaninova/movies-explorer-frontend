@@ -5,7 +5,7 @@ import { useForm } from '../../hooks/useForm.js';
 import { Link } from 'react-router-dom';
 
 function Profile(props) {
-    const { onUpdateUser, onLogout } = props;
+    const { onUpdateUser, onLogout, userName } = props;
     const currentUser = React.useContext(CurrentUserContext);
     const {values, handleChange, setValues} = useForm({
         name: '',
@@ -26,7 +26,7 @@ function Profile(props) {
     return (
         <div className="profile">
             <div className="profile__content">
-                <h2 className='profile__title'>{`Привет, ${currentUser.name}!`}</h2>
+                <h2 className='profile__title'>{`Привет, ${userName}!`}</h2>
                 <form action="#" className="profile__form" onSubmit={handleSubmit}>
                     <div className="profile__form-item profile__name">
                         <label htmlFor='name-input' className="profile__form-item_label">Имя</label>
