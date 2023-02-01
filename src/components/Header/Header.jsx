@@ -7,7 +7,7 @@ import SideBar from '../SideBar/SideBar';
 import { useState } from 'react';
 
 function Header(props) {
-    const {loggedIn} = props;
+    const { loggedIn } = props;
     const location = useLocation();
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     const headerClassName = (`header ${location.pathname === "/" ? 'header_promo' : ''}`);
@@ -25,7 +25,7 @@ function Header(props) {
                 <Link to="/">
                     <img src={logo} alt="логотип" className="header__logo" />
                 </Link>
-                {loggedIn ? (
+                {!loggedIn ? (
                     <div className="header__buttons">
                         <NavLink className="header__button header__button_signup" to="/signup">Регистрация</NavLink>
                         <NavLink className="header__button header__button_signin" to="/signin">Войти</NavLink>

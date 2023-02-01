@@ -5,15 +5,23 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader.js';
 
 function SavedMovies(props) {
-    const { loading } = props;
+    const { value, onChange, onSearch, isChecked, onCheck, onDelete, cards, loading, savedMovies } = props;
 
     return (
         <section className="saved-movies">
-            <SearchForm />
+            <SearchForm
+                value={value}
+                onChange={onChange}
+                onSearch={onSearch}
+                isChecked={isChecked}
+                onCheck={onCheck} />
             {loading ? (
                 <Preloader />
             ) : (
-                <MoviesCardList/>
+                <MoviesCardList
+                    onDelete={onDelete}
+                    cards={cards}
+                    savedMovies={savedMovies}/>
             )}
         </section>
     );

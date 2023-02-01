@@ -37,13 +37,13 @@ export const authorize = (email, password) => {
     })
 };
 
-// export const getContent = (token) => {
-//     return request({
-//         url: '/users/me',
-//         method: 'GET',
-//         token,
-//     });
-// };
+export const getContent = (token) => {
+    return request({
+        url: '/users/me',
+        method: 'GET',
+        token,
+    });
+};
 
 
 // Запросы, переписанные без шаблона
@@ -72,23 +72,6 @@ export const authorize = (email, password) => {
 //             'Content-Type': 'application/json',
 //         },
 //         data: {email, password},
-//         })
-//         .then((res) => {
-//             if (res.ok){
-//                 return res.json();
-//             }
-//             return Promise.reject(res.status);
-//         });
-// };
-
-// export const getContent = (token) => {
-//     return fetch(`${BASE_URL}/users/me`, {
-//         method: 'GET',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${token}`
-//         },
 //         })
 //         .then((res) => {
 //             if (res.ok){

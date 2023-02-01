@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader.js';
 
 function Movies(props) {
-    const {cards, value, onChange, onSearch, onAddToUserList, isMovieAdded, onDelete, loading, didUserSearch, isChecked, onCheck} = props;
+    const {cards, value, onChange, onSearch, onAddToUserList, onDelete, loading, didUserSearch, isChecked, onCheck, savedMovies} = props;
 
     return (
         <section className="movies">
@@ -21,10 +21,10 @@ function Movies(props) {
             ) : (
                 <MoviesCardList
                     onAddToUserList={onAddToUserList}
-                    isMovieAdded={isMovieAdded}
                     onDelete={onDelete}
                     cards={cards}
                     didUserSearch={didUserSearch}
+                    savedMovies={savedMovies}
                 />
             )}
         </section>

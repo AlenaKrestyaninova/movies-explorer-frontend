@@ -31,6 +31,44 @@
     margin-bottom: 40px;
 }
 
+.signup__label {
+    display: block;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+    padding-bottom: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.signup__input {
+    height: 46px;
+    background: #2F2F2F;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    border: none;
+    padding: 0 15px;
+    width: calc(100% - 2*15px);
+    display: block;
+    margin-top: 10px;
+}
+
+.signup__input_red {
+    border: 1px solid #EE3465;
+}
+
+.signup__input-error {
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+    margin: 0;
+    position: absolute;
+    top: 74px;
+    display: block;
+}
+
 .signup__submit {
     background-color: #4285F4;
     border-radius: 3px;

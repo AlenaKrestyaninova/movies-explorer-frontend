@@ -1,11 +1,9 @@
 import React from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
-// import { useForm } from '../../hooks/useForm';
 
 function SearchForm(props) {
     const { value, onChange, onSearch, isChecked, onCheck } = props;
-    // const { values, handleChange, setValues } = useForm;
 
     const handleChange = e => {
         onChange(e.target.value)

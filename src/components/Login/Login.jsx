@@ -1,23 +1,18 @@
 import React from 'react';
 import './Login.css';
 import logo from '../../images/logo.svg';
-import Input from '../Input/Input.jsx';
 import { Link } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm.js';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 
 function Login (props) {
-    const {onLogin} = props;
-    const {values, handleChange, setValues} = useForm({
-        email: '',
-        password: ''
-    });
+    const { onLogin } = props;
+    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
     function handleSubmit(e) {
         e.preventDefault();
         if (!values.password || !values.email) return;
         onLogin({ 
-            name: values.name, 
-            email: values.about,
+            email: values.email,
             password: values.password });
     };
 
@@ -27,27 +22,48 @@ function Login (props) {
                 <img src={logo} alt="лого" className="login__logo" />
                 <h2 className='login__title'>Рады видеть!</h2>
                 <form className='login__form' onSubmit={handleSubmit}>
-                    <Input
-                        id="email"
-                        type="email"
-                        name="email"
-                        label="Email"
-                        placeholder="Электронная почта"
-                        errorText="Формат почты неправильный"
-                        onChange={handleChange}
-                        value={values.email || ''}
-                    />
-                    <Input
-                        id="password"
-                        type="password"
-                        name="password"
-                        label="Пароль"
-                        placeholder="Пароль"
-                        errorText="Пароль содержит недостаточно цифр, букв и еще чего-то там"
-                        onChange={handleChange}
-                        value={values.password || ''} 
-                    />
-                    <button type="submit" className='login__submit'>Войти</button>
+                    <label htmlFor='email' className='login__label'>
+                        Email
+                        <input
+                            required
+                            type='email'
+                            minLength={2}
+                            maxLength={40}
+                            className={`login__input ${errors.email && 'login__input_red'}`}
+                            name='email'
+                            id='email'
+                            value={values.email ? values.email : ''}
+                            onChange={handleChange}
+                            placeholder='Email'
+                        />
+                        <p className='login__input-error'>
+                            {errors.email}
+                        </p>
+                    </label>
+                    <label htmlFor='password' className='login__label'>
+                        Пароль
+                        <input
+                            required
+                            type='password'
+                            minLength={2}
+                            maxLength={40}
+                            className={`login__input ${errors.password && 'login__input_red'}`}
+                            name='password'
+                            id='password'
+                            value={values.password ? values.password : ''}
+                            onChange={handleChange}
+                            placeholder='Пароль'
+                        />
+                        <p className='login__input-error'>
+                            {errors.password}
+                        </p>
+                    </label>
+                    <button
+                        type="submit"
+                        className={`login__submit ${!isValid && 'login__submit_disabled'}`}
+                        disabled={!isValid}>
+                        Войти
+                    </button>
                 </form>
                 <Link exact to="/signup" className="login__to-register">
                     Ещё не зарегистрированы?&nbsp;
