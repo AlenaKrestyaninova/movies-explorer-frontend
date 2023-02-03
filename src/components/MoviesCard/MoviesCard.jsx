@@ -9,6 +9,7 @@ function MoviesCard(props) {
     const isLiked = savedMovies.some((item) => Number(item.movieId) === card.movieId);
     const likeButtonClassName = (`card__like ${isLiked ? 'card__like_active' : ''}`);
     const location = useLocation();
+    // console.log(card);
 
     const addCard = (card) => {
         onAddToUserList(card);

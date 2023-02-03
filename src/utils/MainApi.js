@@ -40,8 +40,8 @@ class MainApi {
     }
 
     /* Удалить фильм из сохраненных*/
-    deleteMovie(movieId){
-        return fetch(`${this._host}/movies/${movieId}`, {
+    deleteMovie(_id){
+        return fetch(`${this._host}/movies/${_id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,

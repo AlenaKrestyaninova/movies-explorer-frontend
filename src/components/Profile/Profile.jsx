@@ -1,13 +1,13 @@
 import React from 'react';
 import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useForm } from '../../hooks/useForm.js';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 import { Link } from 'react-router-dom';
 
 function Profile(props) {
-    const { onUpdateUserInfo, onLogout } = props;
+    const { onUpdateUserInfo, onLogout, successMessage } = props;
     const currentUser = React.useContext(CurrentUserContext);
-    const {values, handleChange, setValues} = useForm({
+    const { values, setValues, handleChange, errors, isValid, resetForm } = useFormWithValidation({
         name: '',
         email: ''
     });
@@ -16,7 +16,7 @@ function Profile(props) {
         e.preventDefault();
         onUpdateUserInfo({ 
             name: values.name, 
-            about: values.about });
+            email: values.email });
     };
 
     React.useEffect(() => {
@@ -27,45 +27,59 @@ function Profile(props) {
         <div className="profile">
             <div className="profile__content">
                 <h2 className='profile__title'>{`Привет, ${currentUser.name}!`}</h2>
-                <form action="#" className="profile__form">
-                    <div className="profile__form-item profile__name">
-                        <label htmlFor='name-input' className="profile__form-item_label">Имя</label>
+                <form action="#" className="profile__form" onSubmit={handleSubmit}>
+
+                    <label htmlFor='name-input' className="profile__form-item">
+                        Имя
                         <input
-                            className="profile__form-item_data profile__name-input"
+                            required
+                            type='text'
+                            minLength={2}
+                            maxLength={40}
+                            className="profile__input profile__name-input"
+                            name='name'
                             id='name-input'
-                            type="text"
                             value={values.name || ''}
-                            placeholder="Имя" 
-                            name="name" 
-                            required
-                            minLength="2" 
-                            maxLength="40"
                             onChange={handleChange}
+                            placeholder='Имя пользователя'
                         />
-                    </div>
-                    <div className="profile__form-item profile__email">
-                        <label htmlFor='email-input' className="profile__form-item_label">Email</label>
+                        <p className='profile__input-error'>
+                            {errors.name}
+                        </p>
+                    </label>
+
+                    <label htmlFor='email-input' className="profile__form-item">
+                        Email
                         <input
-                            className="profile__form-item_data profile__email-input"
-                            id='email-input'
-                            type="email"
-                            value={values.email || ''}
-                            placeholder="Email" 
-                            name="email" 
                             required
-                            minLength="2" 
-                            maxLength="50"
+                            type='email'
+                            minLength={2}
+                            maxLength={50}
+                            className="profile__input profile__email-input"
+                            name='email'
+                            id='email-input'
+                            value={values.email || ''}
                             onChange={handleChange}
+                            placeholder='Email'
                         />
-                    </div>
+                        <p className='profile__input-error'>
+                            {errors.email}
+                        </p>
+                    </label>
+                    <div className="profile__message">{successMessage}</div>
+                    <button
+                        type="submit"
+                        className={`profile__edit ${!isValid && "profile__edit_disabled"}`}>
+                        Редактировать
+                    </button>
+                    <Link 
+                        to="/signin" 
+                        onClick={onLogout}
+                        className="profile__logout">
+                        Выйти
+                    </Link>
+
                 </form>
-                <p className="profile__edit" onClick={handleSubmit}>Редактировать</p>
-                <Link 
-                    to="/signin" 
-                    onClick={onLogout} 
-                    className="profile__logout">
-                    Выйти
-                </Link>
             </div>
         </div>
     );
