@@ -88,13 +88,16 @@ function App() {
     setMovies([]);
     setSavedMovies([]);
     setQuery('');
-    navigate('/signin');
+    navigate('/');
   };
 
   // Проверка токена
   React.useEffect(() => {
     const tokenCheck = () => {
-      if(!localStorage.getItem('jwt')) return;
+      if(!localStorage.getItem('jwt')) {
+        navigate('/')
+        return;
+      };
       const jwt = localStorage.getItem('jwt');
       auth.getContent(jwt)
         .then((data) => {
