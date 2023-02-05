@@ -11,4 +11,4 @@
 [Ссылка на макет](https://drive.google.com/file/d/1g_SFTCLmC7sOra9QJvhEF_McxLQBV9T9/view?usp=share_link)  
 IP 84.201.130.125  
 Frontend https://alenadiploma.nomoredomains.club  
-[Ссылка на пулл реквест](https://github.com/AlenaKrestyaninova/movies-explorer-frontend/compare/main...level-3)
+[Ссылка на пулл реквест](https://github.com/AlenaKrestyaninova/movies-explorer-frontend/pull/2)
