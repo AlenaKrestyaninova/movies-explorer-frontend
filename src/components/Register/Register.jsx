@@ -84,7 +84,7 @@ function Register(props){
                         Зарегистрироваться
                     </button>
                 </form>
-                <Link exact to="/signin" className="signup__to-login">
+                <Link exact="true" to="/signin" className="signup__to-login">
                     Уже зарегистрированы?&nbsp;
                     <span className="signup__to-login_blue">
                         Войти

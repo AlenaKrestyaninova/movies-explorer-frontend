@@ -5,7 +5,22 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader.js';
 
 function Movies(props) {
-    const {cards, value, onChange, onSearch, onAddToUserList, onDelete, loading, didUserSearch, isChecked, onCheck, savedMovies} = props;
+    const {
+        cards,
+        value,
+        onChange,
+        onSearch,
+        onAddToUserList,
+        onDelete,
+        loading,
+        didUserSearch,
+        isChecked,
+        onCheck,
+        savedMovies,
+        width,
+        showMoreMovies,
+        renderedMovies
+    } = props;
 
     return (
         <section className="movies">
@@ -25,6 +40,9 @@ function Movies(props) {
                     cards={cards}
                     didUserSearch={didUserSearch}
                     savedMovies={savedMovies}
+                    showMoreMovies={showMoreMovies}
+                    width={width}
+                    renderedMovies={renderedMovies}
                 />
             )}
         </section>

@@ -16,6 +16,7 @@ import mainApi from '../../utils/MainApi';
 import * as auth from '../../utils/auth';
 import { BASE_URL_MOVIES } from '../../utils/config';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.js';
+import { useResize } from '../../hooks/useResize';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -34,7 +35,24 @@ function App() {
   // Состояние чекбокса
   const [isChecked, setIsChecked] = React.useState(false);
   const [didUserSearch, setDidUserSearch] = React.useState(false);
+  const [renderedMovies, setRenderedMovies] = React.useState(7);
   const navigate = useNavigate();
+  const { width, isMobile } = useResize();
+
+  React.useEffect(() => {
+    if(isMobile) {
+      setRenderedMovies(5);
+    }
+  }, [])
+
+  // Показать больше фильмов
+  function handleShowMoreMovies() {
+    if(isMobile) {
+      setRenderedMovies(renderedMovies + 5);
+    } else {
+      setRenderedMovies(renderedMovies + 7);
+    }
+  };
 
   const handleLogin = (data) => {
     return auth.authorize(data.email, data.password)
@@ -70,7 +88,7 @@ function App() {
     setMovies([]);
     setSavedMovies([]);
     setQuery('');
-    navigate("/");
+    navigate('/signin');
   };
 
   // Проверка токена
@@ -82,6 +100,7 @@ function App() {
         .then((data) => {
           if (data) {
             setLoggedIn(true);
+            navigate('/movies');
           }
         })
         .catch(err => {
@@ -105,6 +124,9 @@ function App() {
   // Получить изначальные фильмы при загрузке страницы
   React.useEffect(()=>{
     if (loggedIn){
+      if(localStorage.checkbox){
+        setIsChecked(JSON.parse(localStorage.checkbox));
+      }
       if(!localStorage.initialMovies){
         moviesApi.getInitialMovies()
           .then(initialMovies => {
@@ -113,17 +135,17 @@ function App() {
           .catch((err) => console.log(err))
       };
       if(localStorage.query) {
-        setMovies(mapTheArray(JSON.parse(localStorage.initialMovies).filter((movie) => movie.nameEN.toLowerCase().includes(localStorage.query.toLowerCase()))))
+        const moviesToShow = mapTheArray(JSON.parse(localStorage.initialMovies).filter((movie) => movie.nameEN.toLowerCase().includes(localStorage.query.toLowerCase())))
+        showByCheckboxState(moviesToShow);
       };
       mainApi.getUserMovies()
         .then(userMovies => {
-          setSavedMovies(userMovies);
+          showByCheckboxStateInSaved(userMovies);
           localStorage.setItem('savedMovies', JSON.stringify(userMovies))
         })
         .catch((err) => console.log(err))
-      // setIsChecked(JSON.parse(localStorage.checkbox));
     }
-  }, [loggedIn]);
+  }, [loggedIn, isChecked]);
 
   // Обновить данные пользователя
   function handleUpdateUserInfo(data){
@@ -134,13 +156,6 @@ function App() {
       })
       .catch((err) => console.log(err))
   }
-
-  // Фильтрация списка фильмов по состоянию чекбокса
-  const checkCheckbox = (moviesArray) => {
-    if(isChecked){
-      return moviesArray.filter((movie) => movie.duration < 41)
-    } else {return moviesArray}
-  };
 
   // Переключение состояния чекбокса
   const handleToggleCheckbox = () => {
@@ -153,6 +168,25 @@ function App() {
     }
   };
 
+  // Отобразить фильмы по чекбоксу
+  const showByCheckboxState = (moviesArray) => {
+    if (!isChecked) {
+      setMovies(moviesArray);
+    } else {
+      setMovies(moviesArray.filter((movie) => movie.duration < 41));
+    }
+  };
+
+  // Отобразить фильмы по чекбоксу в сохраненных
+  const showByCheckboxStateInSaved = (moviesArray) => {
+    if (!isChecked) {
+      setSavedMovies(moviesArray);
+    } else {
+      setSavedMovies(moviesArray.filter((movie) => movie.duration < 41));
+    }
+  };
+
+  // Сделать из фильма, пришедшего с сервера, нормальную карточку фильма
   const mapTheArray = (array) => {
     return array.map(item => ({
       country: item.country,
@@ -177,9 +211,8 @@ function App() {
     localStorage.setItem('query', query);
     setQuery(searchWord);
     const moviesToMap = JSON.parse(localStorage.initialMovies).filter((movie) => movie.nameEN.toLowerCase().includes(query.toLowerCase()))
-    const moviesToFilter = mapTheArray(moviesToMap);
-    const foundMovies = checkCheckbox(moviesToFilter);
-    setMovies(foundMovies);
+    const foundMovies = mapTheArray(moviesToMap);
+    showByCheckboxState(foundMovies);
     setTimeout(setLoading(false), 1000);
     setQuery('');
     setDidUserSearch(true);
@@ -228,7 +261,7 @@ function App() {
     e.preventDefault();
     if(!query) return;
     const foundMoviesWithinSaved = savedMovies.filter((movie) => movie.nameEN.toLowerCase().includes(query.toLowerCase()));
-    setSavedMovies(foundMoviesWithinSaved);
+    showByCheckboxStateInSaved(foundMoviesWithinSaved)
     setQuery('');
   };
 
@@ -260,6 +293,9 @@ function App() {
                     isChecked={isChecked}
                     onCheck={handleToggleCheckbox}
                     savedMovies={savedMovies}
+                    width={width}
+                    renderedMovies={renderedMovies}
+                    showMoreMovies={handleShowMoreMovies}
                 />} />
               <Route 
                 path="/saved-movies"
@@ -273,6 +309,7 @@ function App() {
                     loading={loading}
                     onCheck={handleToggleCheckbox}
                     savedMovies={savedMovies}
+                    width={width}
                   />} />
               <Route 
                 path="/profile"

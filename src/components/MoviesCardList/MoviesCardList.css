@@ -18,6 +18,25 @@
     text-align: center;
 }
 
+.card-list__else {
+    margin: 50px auto 0;
+    border: none;
+    width: 320px;
+    height: 32px;
+    line-height: 32px;
+    font-weight: 500;
+    font-size: 12px;
+    color: white;
+    background-color: #2F2F2F;
+    border-radius: 6px;
+    display: block;
+    transition: opacity .3s ease-in-out;
+}
+
+.card-list__else:hover {
+    opacity: 0.6;
+}
+
 /* Медиа-запрос для ширины 768px (меньше 1279px)*/
 @media all and (max-width:1279px) {
     .card-list {
@@ -35,5 +54,8 @@
         justify-content: space-between;
         min-height: 232px;
         margin-bottom: 20px;
+    }
+    .card-list__else {
+        width: calc(100% - 2*40px);
     }
 }

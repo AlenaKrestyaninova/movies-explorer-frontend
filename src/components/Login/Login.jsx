@@ -65,7 +65,7 @@ function Login (props) {
                         Войти
                     </button>
                 </form>
-                <Link exact to="/signup" className="login__to-register">
+                <Link exact="true" to="/signup" className="login__to-register">
                     Ещё не зарегистрированы?&nbsp;
                     <span className="login__to-register_blue">
                         Регистрация
