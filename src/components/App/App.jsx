@@ -21,7 +21,7 @@ import { useResize } from '../../hooks/useResize';
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   // Состояние логина
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(!!localStorage.getItem('jwt') || false);
   // Запрос в поиске
   const [query, setQuery] = React.useState('');
   // Фильмы
@@ -69,7 +69,7 @@ function App() {
   const handleRegister = (data) => {
     return auth.register(data.name, data.email, data.password)
       .then(() =>{
-        navigate('/signin');
+        handleLogin(data);
       })
       .catch(err => {
         console.log(err);
@@ -103,14 +103,14 @@ function App() {
         .then((data) => {
           if (data) {
             setLoggedIn(true);
-            navigate('/movies');
           }
         })
         .catch(err => {
           console.log(err);
+          setLoggedIn(false);
         })
     };
-    tokenCheck()
+    tokenCheck();
   }, [])
 
   // Загрузить информацию о пользователе
@@ -138,7 +138,11 @@ function App() {
           .catch((err) => console.log(err))
       };
       if(localStorage.query) {
-        const moviesToShow = mapTheArray(JSON.parse(localStorage.initialMovies).filter((movie) => movie.nameEN.toLowerCase().includes(localStorage.query.toLowerCase())))
+        setQuery(localStorage.query);
+        const moviesToShow = mapTheArray(
+          JSON.parse(localStorage.initialMovies)
+            .filter((movie) => movie.nameEN.toLowerCase().includes(localStorage.query.toLowerCase()) || movie.nameRU.toLowerCase().includes(localStorage.query.toLowerCase()))
+        )
         showByCheckboxState(moviesToShow);
       };
       mainApi.getUserMovies()
@@ -213,11 +217,12 @@ function App() {
     setLoading(true);
     localStorage.setItem('query', query);
     setQuery(searchWord);
-    const moviesToMap = JSON.parse(localStorage.initialMovies).filter((movie) => movie.nameEN.toLowerCase().includes(query.toLowerCase()))
+    const moviesToMap = JSON.parse(localStorage.initialMovies)
+      .filter((movie) => movie.nameEN.toLowerCase().includes(query.toLowerCase()) || movie.nameRU.toLowerCase().includes(query.toLowerCase()))
     const foundMovies = mapTheArray(moviesToMap);
     showByCheckboxState(foundMovies);
     setTimeout(setLoading(false), 1000);
-    setQuery('');
+    // setQuery('');
     setDidUserSearch(true);
   };
 
@@ -263,7 +268,8 @@ function App() {
   const handleSearchWithinSaved = e => {
     e.preventDefault();
     if(!query) return;
-    const foundMoviesWithinSaved = savedMovies.filter((movie) => movie.nameEN.toLowerCase().includes(query.toLowerCase()));
+    const foundMoviesWithinSaved = savedMovies
+      .filter((movie) => movie.nameEN.toLowerCase().includes(query.toLowerCase()) || movie.nameRU.toLowerCase().includes(query.toLowerCase()));
     showByCheckboxStateInSaved(foundMoviesWithinSaved)
     setQuery('');
   };
