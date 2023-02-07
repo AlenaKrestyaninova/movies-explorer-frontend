@@ -37,13 +37,13 @@ function App() {
   const [didUserSearch, setDidUserSearch] = React.useState(false);
   const [renderedMovies, setRenderedMovies] = React.useState(7);
   const navigate = useNavigate();
-  const { width, isMobile } = useResize();
+  const { isMobile } = useResize();
 
   React.useEffect(() => {
     if(isMobile) {
       setRenderedMovies(5);
     }
-  }, [])
+  }, [isMobile])
 
   // Показать больше фильмов
   function handleShowMoreMovies() {
@@ -302,7 +302,6 @@ function App() {
                     isChecked={isChecked}
                     onCheck={handleToggleCheckbox}
                     savedMovies={savedMovies}
-                    width={width}
                     renderedMovies={renderedMovies}
                     showMoreMovies={handleShowMoreMovies}
                 />} />
@@ -318,7 +317,6 @@ function App() {
                     loading={loading}
                     onCheck={handleToggleCheckbox}
                     savedMovies={savedMovies}
-                    width={width}
                   />} />
               <Route 
                 path="/profile"

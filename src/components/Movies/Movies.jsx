@@ -17,7 +17,6 @@ function Movies(props) {
         isChecked,
         onCheck,
         savedMovies,
-        width,
         showMoreMovies,
         renderedMovies
     } = props;
@@ -41,7 +40,6 @@ function Movies(props) {
                     didUserSearch={didUserSearch}
                     savedMovies={savedMovies}
                     showMoreMovies={showMoreMovies}
-                    width={width}
                     renderedMovies={renderedMovies}
                 />
             )}

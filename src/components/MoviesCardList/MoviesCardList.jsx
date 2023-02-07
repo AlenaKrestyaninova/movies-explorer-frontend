@@ -3,7 +3,7 @@ import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import { useLocation } from 'react-router-dom';
 
 function MoviesCardList(props) {
-    const { cards, onAddToUserList, onDelete, didUserSearch, savedMovies, width, showMoreMovies, renderedMovies } = props
+    const { cards, onAddToUserList, onDelete, didUserSearch, savedMovies, showMoreMovies, renderedMovies } = props
     const location = useLocation();
 
     if (didUserSearch && cards.length === 0) {

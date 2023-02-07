@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Profile(props) {
     const { onUpdateUserInfo, onLogout, successMessage } = props;
     const currentUser = React.useContext(CurrentUserContext);
-    const { values, setValues, handleChange, errors, isValid, resetForm } = useFormWithValidation({
+    const { values, setValues, handleChange, errors, isValid } = useFormWithValidation({
         name: '',
         email: ''
     });

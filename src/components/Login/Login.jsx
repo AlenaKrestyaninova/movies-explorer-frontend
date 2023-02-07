@@ -6,7 +6,7 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 
 function Login (props) {
     const { onLogin } = props;
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     function handleSubmit(e) {
         e.preventDefault();
