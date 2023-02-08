@@ -5,9 +5,9 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 import { Link } from 'react-router-dom';
 
 function Profile(props) {
-    const { onUpdateUserInfo, onLogout, successMessage } = props;
+    const { onUpdateUserInfo, onLogout, message, loading } = props;
     const currentUser = React.useContext(CurrentUserContext);
-    const { values, setValues, handleChange, errors, isValid } = useFormWithValidation({
+    const { values, setValues, handleChange, errors, isValid, setIsValid } = useFormWithValidation({
         name: '',
         email: ''
     });
@@ -22,6 +22,12 @@ function Profile(props) {
     React.useEffect(() => {
         setValues({name: currentUser.name, email: currentUser.email}); 
     }, [currentUser]);
+
+    React.useEffect(() => {
+        if (values.name === currentUser.name && values.email === currentUser.email){
+            setIsValid(false);
+        } 
+    }, [values]);
 
     return (
         <div className="profile">
@@ -42,6 +48,7 @@ function Profile(props) {
                             value={values.name || ''}
                             onChange={handleChange}
                             placeholder='Имя пользователя'
+                            disabled={loading}
                         />
                         <p className='profile__input-error'>
                             {errors.name}
@@ -61,14 +68,16 @@ function Profile(props) {
                             value={values.email || ''}
                             onChange={handleChange}
                             placeholder='Email'
+                            disabled={loading}
                         />
                         <p className='profile__input-error'>
                             {errors.email}
                         </p>
                     </label>
-                    <div className="profile__message">{successMessage}</div>
+                    <div className="profile__message">{message}</div>
                     <button
                         type="submit"
+                        disabled={!isValid || loading}
                         className={`profile__edit ${!isValid && "profile__edit_disabled"}`}>
                         Редактировать
                     </button>

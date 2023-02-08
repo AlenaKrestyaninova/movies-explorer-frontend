@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 
 function Login (props) {
-    const { onLogin } = props;
+    const { onLogin, loading } = props;
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     function handleSubmit(e) {
@@ -35,6 +35,7 @@ function Login (props) {
                             value={values.email ? values.email : ''}
                             onChange={handleChange}
                             placeholder='Email'
+                            disabled={loading}
                         />
                         <p className='login__input-error'>
                             {errors.email}
@@ -53,6 +54,7 @@ function Login (props) {
                             value={values.password ? values.password : ''}
                             onChange={handleChange}
                             placeholder='Пароль'
+                            disabled={loading}
                         />
                         <p className='login__input-error'>
                             {errors.password}
@@ -61,7 +63,7 @@ function Login (props) {
                     <button
                         type="submit"
                         className={`login__submit ${!isValid && 'login__submit_disabled'}`}
-                        disabled={!isValid}>
+                        disabled={!isValid || loading}>
                         Войти
                     </button>
                 </form>

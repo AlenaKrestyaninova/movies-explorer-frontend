@@ -10,6 +10,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Footer from '../Footer/Footer.jsx';
+import InfoTooltip from '../InfoTooltip/InfoTooltip.jsx';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import moviesApi from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
@@ -27,7 +28,7 @@ function App() {
   // Фильмы
   const [movies, setMovies] = React.useState([]);
   // Сообщение об успешных изменениях данных юзера
-  const [successMessage, setSuccessMessage] = React.useState('');
+  const [message, setMessage] = React.useState('');
   // Фильмы пользователя
   const [savedMovies, setSavedMovies] = React.useState([]);
   // Показать прелоадер
@@ -36,6 +37,8 @@ function App() {
   const [isChecked, setIsChecked] = React.useState(false);
   const [didUserSearch, setDidUserSearch] = React.useState(false);
   const [renderedMovies, setRenderedMovies] = React.useState(7);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
+  const [isAuthOk, setIsAuthOk]  = React.useState(false);
   const navigate = useNavigate();
   const { isMobile } = useResize();
 
@@ -55,25 +58,36 @@ function App() {
   };
 
   const handleLogin = (data) => {
+    setLoading(true)
     return auth.authorize(data.email, data.password)
       .then((data) => {
         localStorage.setItem('jwt', data.token)
         setLoggedIn(true);
+        setIsAuthOk(true);
         navigate('/movies');
       })
       .catch(err => {
         console.log(err);
+        setIsAuthOk(false);
+      })
+      .finally(() => {
+        setLoading(false);
+        setIsInfoTooltipOpen(true);
       })
   };
 
   const handleRegister = (data) => {
+    setLoading(true)
     return auth.register(data.name, data.email, data.password)
       .then(() =>{
         handleLogin(data);
       })
       .catch(err => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        setLoading(false);
+      })
   };
 
   const handleLogout = () => {
@@ -156,12 +170,19 @@ function App() {
 
   // Обновить данные пользователя
   function handleUpdateUserInfo(data){
+    setLoading(true)
     mainApi.setUserInfo(data)
       .then(userInfo => {
         setCurrentUser(userInfo);
-        setSuccessMessage('Данные успешно обновлены');
+        setMessage('Данные успешно обновлены');
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+        setMessage(`Что-то пошло не так: ${err}`);
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   // Переключение состояния чекбокса
@@ -274,6 +295,10 @@ function App() {
     setQuery('');
   };
 
+  function closeInfoTooltip(){
+    setIsInfoTooltipOpen(false);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -283,8 +308,8 @@ function App() {
         <main className="main">
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/signup" element={<Register onRegister={handleRegister} />} />
-            <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<Register onRegister={handleRegister} loading={loading} />} />
+            <Route path="/signin" element={<Login onLogin={handleLogin} loading={loading} />} />
 
             <Route path="/" element={<ProtectedRoute loggedIn={loggedIn} />}>
               <Route
@@ -324,7 +349,8 @@ function App() {
                   <Profile
                     onUpdateUserInfo={handleUpdateUserInfo}
                     onLogout={handleLogout}
-                    successMessage={successMessage}/>} 
+                    message={message}
+                    loading={loading}/>} 
               />
             </Route>
             
@@ -333,6 +359,13 @@ function App() {
         </main>
         
         <Footer />
+
+        <InfoTooltip
+            isAuthOk={isAuthOk}
+            isOpen={isInfoTooltipOpen}
+            onClose={closeInfoTooltip}
+        />
+
       </div>
     </CurrentUserContext.Provider>
   );

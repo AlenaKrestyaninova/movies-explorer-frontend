@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 
 function Register(props){
-    const { onRegister } = props;
+    const { onRegister, loading } = props;
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     function handleSubmit(e) {
@@ -36,6 +36,7 @@ function Register(props){
                             value={values.name ? values.name : ''}
                             onChange={handleChange}
                             placeholder='Имя пользователя'
+                            disabled={loading}
                         />
                         <p className='signup__input-error'>
                             {errors.name}
@@ -54,6 +55,7 @@ function Register(props){
                             value={values.email ? values.email : ''}
                             onChange={handleChange}
                             placeholder='Email'
+                            disabled={loading}
                         />
                         <p className='signup__input-error'>
                             {errors.email}
@@ -72,6 +74,7 @@ function Register(props){
                             value={values.password ? values.password : ''}
                             onChange={handleChange}
                             placeholder='Пароль'
+                            disabled={loading}
                         />
                         <p className='signup__input-error'>
                             {errors.password}
@@ -80,7 +83,7 @@ function Register(props){
                     <button 
                         type="submit"
                         className={`signup__submit ${!isValid && 'signup__submit_disabled'}`}
-                        disabled={!isValid}>
+                        disabled={!isValid || loading}>
                         Зарегистрироваться
                     </button>
                 </form>
