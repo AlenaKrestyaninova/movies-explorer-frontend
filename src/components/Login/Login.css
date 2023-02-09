@@ -31,6 +31,44 @@
     margin-bottom: 40px;
 }
 
+.login__label {
+    display: block;
+    font-size: 10px;
+    line-height: 12px;
+    color: #8B8B8B;
+    padding-bottom: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.login__input {
+    height: 46px;
+    background: #2F2F2F;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    border: none;
+    padding: 0 15px;
+    width: calc(100% - 2*15px);
+    display: block;
+    margin-top: 10px;
+}
+
+.login__input_red {
+    border: 1px solid #EE3465;
+}
+
+.login__input-error {
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+    margin: 0;
+    position: absolute;
+    top: 74px;
+    display: block;
+}
+
 .login__submit {
     background: #4285F4;
     border-radius: 3px;
@@ -44,6 +82,11 @@
     padding: 0;
     margin-top: 91px;
     transition: opacity .3s ease-in-out;
+}
+
+.login__submit_disabled {
+    background-color: #2F2F2F;
+    color: #8B8B8B;
 }
 
 .login__to-register {

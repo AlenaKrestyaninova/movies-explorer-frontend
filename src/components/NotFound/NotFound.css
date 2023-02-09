@@ -46,6 +46,13 @@
     text-decoration: none;
     text-align: center;
     margin-bottom: 60px;
+    background-color: transparent;
+    border: none;
+    transition: opacity .3s ease-in-out;
+}
+
+.not-found__back:hover {
+    opacity: 0.6;
 }
 
 /* Медиа-запрос для ширины 320px (меньше 767px)*/

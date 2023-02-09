@@ -1,0 +1,90 @@
+.info {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .5s, opacity .5s linear;
+}
+
+.info_opened {
+    visibility: visible;
+    opacity: 1;
+}
+
+.info__container {
+    width: 430px;
+    background-color: white;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    position: relative;
+}
+
+.info__close {
+    background-image: url(../../images/Close_Icon.svg);
+    background-size: 32px 32px;
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    border: none;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    padding: 0;
+}
+
+.info__close:hover {
+    opacity: 0.6;
+}
+
+.info__content {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 36px 60px;
+}
+
+.info__register-image {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.info__message {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+    padding-top: 32px;
+    margin: 0 auto;
+}
+
+/* Медиа-запрос для ширины 425px (меньше 768px)*/
+@media all and (max-width:767px) {
+    .info__container {
+        max-width: calc(100% - 2*19px);
+    }
+    .info__close {
+        background-size: 20px 20px;
+        width: 20px;
+        height: 20px;
+        top: -36px;
+        right: 0;
+    }
+    .info__content {
+        padding: 50px 18px 50px;
+    }
+    .info__message {
+        padding-top: 40px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
